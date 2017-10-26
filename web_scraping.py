@@ -9,7 +9,7 @@ def getTableHtml(url: str):
 
 def getLinkByRegion():
     links = []
-    table = getRegionsTableHtml()
+    table = getTableHtml('https://www.czso.cz/csu/czso/okresy-podle-pohlavi-2005-2014')
     all_trs = table.find_all('tr')
     trs_names = all_trs[::4]
     trs_hrefs = all_trs[1::4]
@@ -28,7 +28,7 @@ def getLinkByRegion():
 def getAreaByRegion():
     regions = []
 
-    table = getRegionsTableHtml()
+    table = getTableHtml('https://cs.wikipedia.org/wiki/Seznam_okres%C5%AF_v_%C4%8Cesku')
 
     for tr in table.find_all('tr'):
         tds = tr.find_all('td')
