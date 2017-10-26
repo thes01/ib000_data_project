@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def getTableHtml(url: str):
-    page = requests.get('https://www.czso.cz/csu/czso/okresy-podle-pohlavi-2005-2014')
+    page = requests.get(urls)
     soup = BeautifulSoup(page.content, 'html.parser')
 
     return soup.find('table')
