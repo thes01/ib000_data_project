@@ -41,6 +41,7 @@ def getAreaByRegion():
         if a_region == None:
             continue
 
+        # find the corresponding html tags and replace some html characters and comma (, -> .)
         region_name = a_region.get('title').replace('Okres ', '')
         text_area = tds[2].get_text().replace('\xa0','').replace(',','.')
 
