@@ -1,5 +1,5 @@
 import urllib.request
-from csu_okresy import *
+from web_scraping import *
 
 links = getLinkByRegion()
 
