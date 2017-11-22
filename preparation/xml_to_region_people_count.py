@@ -3,10 +3,13 @@ from xml_parser import getDictOfDiscrictsForYear
 def combineDictionaries(dictionaries_by_year: list):
     reference_keys = dictionaries_by_year[0].keys()
 
-    new_dict = dict.fromkeys(reference_keys, [])
+    new_dict = dict.fromkeys(reference_keys)
 
     for key in reference_keys:
         for dictionary in dictionaries_by_year:
+            if new_dict[key] == None:
+                new_dict[key] = []
+
             new_dict[key].append(dictionary[key])
 
     return new_dict
