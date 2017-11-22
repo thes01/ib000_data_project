@@ -1,0 +1,77 @@
+{'region': 'Benešov', 'area': 1474.69}
+{'region': 'Beroun', 'area': 661.91}
+{'region': 'Blansko', 'area': 862.65}
+{'region': 'Brno-mìsto', 'area': 230.22}
+{'region': 'Brno-venkov', 'area': 1498.95}
+{'region': 'Bruntál', 'area': 1536.06}
+{'region': 'Bøeclav', 'area': 1048.91}
+{'region': 'Èeská Lípa', 'area': 1072.91}
+{'region': 'Èeské Budìjovice', 'area': 1638.3}
+{'region': 'Èeský Krumlov', 'area': 1615.03}
+{'region': 'Dìèín', 'area': 908.58}
+{'region': 'Domažlice', 'area': 1123.46}
+{'region': 'Frýdek-Místek', 'area': 1208.49}
+{'region': 'Havlíèkùv Brod', 'area': 1264.95}
+{'region': 'Hodonín', 'area': 1099.13}
+{'region': 'Hradec Králové', 'area': 891.62}
+{'region': 'Cheb', 'area': 1045.94}
+{'region': 'Chomutov', 'area': 935.3}
+{'region': 'Chrudim', 'area': 992.62}
+{'region': 'Jablonec nad Nisou', 'area': 402.3}
+{'region': 'Jeseník', 'area': 718.96}
+{'region': 'Jièín', 'area': 886.63}
+{'region': 'Jihlava', 'area': 1199.32}
+{'region': 'Jindøichùv Hradec', 'area': 1943.69}
+{'region': 'Karlovy Vary', 'area': 1514.95}
+{'region': 'Karviná', 'area': 356.24}
+{'region': 'Kladno', 'area': 719.61}
+{'region': 'Klatovy', 'area': 1945.69}
+{'region': 'Kolín', 'area': 743.57}
+{'region': 'Kromìøíž', 'area': 795.67}
+{'region': 'Kutná Hora', 'area': 916.93}
+{'region': 'Liberec', 'area': 988.87}
+{'region': 'Litomìøice', 'area': 1032.16}
+{'region': 'Louny', 'area': 1117.65}
+{'region': 'Mìlník', 'area': 701.08}
+{'region': 'Mladá Boleslav', 'area': 1022.83}
+{'region': 'Most', 'area': 467.16}
+{'region': 'Náchod', 'area': 851.57}
+{'region': 'Nový Jièín', 'area': 881.59}
+{'region': 'Nymburk', 'area': 850.07}
+{'region': 'Olomouc', 'area': 1620.28}
+{'region': 'Opava', 'area': 1113.11}
+{'region': 'Ostrava-mìsto', 'area': 331.53}
+{'region': 'Pardubice', 'area': 880.09}
+{'region': 'Pelhøimov', 'area': 1290.0}
+{'region': 'Písek', 'area': 1126.84}
+{'region': 'Plzeò-jih', 'area': 990.04}
+{'region': 'Plzeò-mìsto', 'area': 261.46}
+{'region': 'Plzeò-sever', 'area': 1286.79}
+{'region': 'Hlavní mìsto Praha', 'area': 496.03}
+{'region': 'Praha-východ', 'area': 754.91}
+{'region': 'Praha-západ', 'area': 580.63}
+{'region': 'Prachatice', 'area': 1375.03}
+{'region': 'Prostìjov', 'area': 777.32}
+{'region': 'Pøerov', 'area': 844.74}
+{'region': 'Pøíbram', 'area': 1692.05}
+{'region': 'Rakovník', 'area': 896.3}
+{'region': 'Rokycany', 'area': 575.11}
+{'region': 'Rychnov nad Knìžnou', 'area': 981.78}
+{'region': 'Semily', 'area': 698.99}
+{'region': 'Sokolov', 'area': 753.6}
+{'region': 'Strakonice', 'area': 1032.1}
+{'region': 'Svitavy', 'area': 1378.56}
+{'region': 'Šumperk', 'area': 1313.06}
+{'region': 'Tábor', 'area': 1326.01}
+{'region': 'Tachov', 'area': 1378.68}
+{'region': 'Teplice', 'area': 469.27}
+{'region': 'Trutnov', 'area': 1146.78}
+{'region': 'Tøebíè', 'area': 1463.07}
+{'region': 'Uherské Hradištì', 'area': 991.37}
+{'region': 'Ústí nad Labem', 'area': 404.44}
+{'region': 'Ústí nad Orlicí', 'area': 1258.31}
+{'region': 'Vsetín', 'area': 1142.87}
+{'region': 'Vyškov', 'area': 876.06}
+{'region': 'Zlín', 'area': 1033.59}
+{'region': 'Znojmo', 'area': 1590.5}
+{'region': 'Žïár nad Sázavou', 'area': 1578.51}

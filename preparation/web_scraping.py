@@ -47,7 +47,7 @@ def getAreaByRegion():
 
         val_area = float(text_area)
 
-        regions.append({"name" : region_name, "area": val_area})
+        regions.append({"region" : region_name, "area": val_area})
 
         # regions.append('{};{}'.format(region_name, val_area))
 
