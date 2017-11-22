@@ -2,7 +2,10 @@ from excel_parser import getCirulationValuesByYears
 import os
 
 with open('data/region_deaths.csv', mode='w') as csv_file:
-    for filename in os.listdir('data/excel'):
+    list_dir = os.listdir('data/excel')
+    list_dir.sort()
+    
+    for filename in list_dir:
         district_name = filename.split('.')[0]
         district_deaths = getCirulationValuesByYears(district_name)
 
