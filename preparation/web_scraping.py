@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def getTableHtml(url: str):
-    page = requests.get(urls)
+    page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
 
     return soup.find('table')
@@ -47,6 +47,8 @@ def getAreaByRegion():
 
         val_area = float(text_area)
 
-        regions.append('{};{}'.format(region_name, val_area))
+        regions.append({"name" : region_name, "area": val_area})
+
+        # regions.append('{};{}'.format(region_name, val_area))
 
     return regions

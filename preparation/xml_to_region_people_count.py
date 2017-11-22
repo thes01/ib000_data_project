@@ -21,6 +21,6 @@ with open('data/region_counts.csv', mode='w') as csv_file:
     keys_list = list(merged.keys())
     keys_list.sort()
     for key in keys_list:
-        csv_file.write("{};{}\n".format(key, merged[key]))
+        csv_file.write("{};{}\n".format(repr(key), merged[key]))
 
 print('writing completed')
