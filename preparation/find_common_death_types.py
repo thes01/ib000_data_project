@@ -10,6 +10,7 @@ list_dir.sort()
 
 temp_intersection = []
 
+
 def intersect_lists(first: list, second: list):
     intersection = []
 
@@ -18,6 +19,7 @@ def intersect_lists(first: list, second: list):
             intersection.append(item)
 
     return intersection
+
 
 for filename in list_dir:
     district_name = filename.split('.')[0]

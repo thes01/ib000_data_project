@@ -15,6 +15,7 @@ COMMON_IDS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'IX', 'X', 'XI', 'XII', 'XIII',
 
 #     return data
 
+
 def loadTxtFile(filename: str):
     data = []
     with open('data/{}.txt'.format(filename)) as txt_file:
@@ -37,7 +38,7 @@ for common_id in ['XVIII']:
     print('{}:\n'.format(common_id))
 
     for year in range(2009, 2010):
-        values = [] # (name, density, percentage of deaths)
+        values = []  # (name, density, percentage of deaths)
 
         for i in range(len(data_deaths)):
             district_name = data_counts[i]["region"]
@@ -49,24 +50,21 @@ for common_id in ['XVIII']:
             density = district_count / district_area
             percent_death = (district_death / district_count) * 100
 
-            values.append((district_name,density, percent_death))
+            values.append((district_name, density, percent_death))
 
         values.sort(key=lambda tup: tup[1], reverse=False)
 
-
         y_pos = np.arange(len(values))
 
-        plt.rcParams["figure.figsize"] = (15,10)
+        plt.rcParams["figure.figsize"] = (15, 10)
         plt.subplots_adjust(left=0.05, right=0.95, top=0.95, bottom=0.2)
 
-        plt.bar(y_pos, list(map(lambda tup: tup[2],values)), align='center', alpha=0.5)
-        plt.xticks(y_pos,list(map(lambda tup: tup[0], values)), rotation='vertical')
+        plt.bar(y_pos, list(map(lambda tup: tup[2], values)), align='center', alpha=0.5)
+        plt.xticks(y_pos, list(map(lambda tup: tup[0], values)), rotation='vertical')
         plt.ylabel('Počet úmrtí v %')
         plt.title('Úmrtí {} v jedn. okresech v roce {} - seřazeno podle hustoty (vlevo nejmenší)'.format(common_id, year))
 
         plt.savefig('graphs/{}-{}'.format(common_id, year), dpi=200)
-
         plt.clf()
 
-
-        print("{}: {}".format(year,getPearsonCorrelation(values, 1, 2)))
+        print("{}: {}".format(year, getPearsonCorrelation(values, 1, 2)))

@@ -1,11 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 def getTableHtml(url: str):
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
 
     return soup.find('table')
+
 
 def getLinkByRegion():
     links = []
@@ -24,6 +26,7 @@ def getLinkByRegion():
         links.append((name, href))
 
     return links
+
 
 def getAreaByRegion():
     regions = []

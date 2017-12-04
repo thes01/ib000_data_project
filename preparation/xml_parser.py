@@ -3,10 +3,12 @@ from lxml import etree
 DISTRICT_ID = '101'
 PRAGUE_ID = '3018'
 
+
 # a helper function to add the namespace and/or global prefix
 def tag(tag_name: str, is_global=False, namespace = "{http://vdb.czso.cz/xml/export}"):
     glob_prefix = "//" if is_global else ""
     return glob_prefix + namespace + tag_name
+
 
 # get a value from an unique entry
 def getEntryValue(entries, id, indicator):
@@ -25,6 +27,7 @@ def getEntryValue(entries, id, indicator):
 
         if match_id and match_indicator:
             return value
+
 
 def processEntries(entries):
     entries_list = {}

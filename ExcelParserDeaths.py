@@ -20,7 +20,7 @@ class ExcelParserDeaths:
 
         return False
 
-    def getValuesByYears(self, row, start_year = 2005, end_year = 2014):
+    def getValuesByYears(self, row, start_year=2005, end_year=2014):
         result_list = []
 
         for year in range(start_year, end_year + 1):
@@ -40,8 +40,7 @@ class ExcelParserDeaths:
             result[id] = self.getValuesByYears(row)
 
         return result
-
-
+    
     def close(self):
         self.wb.close()
 

@@ -10,5 +10,4 @@ first = loadNames('region_areas')
 second = loadNames('region_counts')
 third = loadNames('region_deaths')
 
-
 print(second == third)
