@@ -4,53 +4,69 @@ import numpy as np
 
 from statistics import *
 
-def loadCsvFile(filename: str):
-    data = []
-    with open('data/{}.csv'.format(filename)) as csv_file:
-        for line in csv_file:
-            data.append(line.split(';'))
+COMMON_IDS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XVI', 'XVII', 'XVIII', 'XX']
 
+# def loadCsvFile(filename: str):
+#     data = []
+#     with open('data/{}.csv'.format(filename)) as csv_file:
+#         for line in csv_file:
+#             if len(line) > 0:
+#                 data.append(list(map(mapping_func, line.split(';'))))
+
+#     return data
+
+def loadTxtFile(filename: str):
+    data = []
+    with open('data/{}.txt'.format(filename)) as txt_file:
+        for line in txt_file:
+            if len(line) > 0:
+                data.append(eval(line))
     return data
 
+data_deaths = loadTxtFile('region_deaths')
+data_counts = loadTxtFile('region_counts')
+data_areas = loadTxtFile('region_areas')
 
-data_deaths = loadCsvFile('region_deaths')
-data_counts = loadCsvFile('region_counts')
-data_areas = loadCsvFile('region_areas')
-
-data_deaths.sort(key=lambda tup: tup[0], reverse=True)
-data_counts.sort(key=lambda tup: tup[0], reverse=True)
-data_areas.sort(key=lambda tup: tup[0], reverse=True)
+data_deaths.sort(key=lambda dict: dict["region"])
+data_counts.sort(key=lambda dict: dict["region"])
+data_areas.sort(key=lambda dict: dict["region"])
 
 assert len(data_deaths) == len(data_counts) == len(data_areas)
 
-for year in range(2005, 2015):
-    values = [] # (name, density, percentage of deaths)
+for common_id in ['XVIII']:
+    print('{}:\n'.format(common_id))
 
-    for i in range(len(data_deaths)):
-        district_name = data_counts[i][0]
-        district_area = float(data_areas[i][1])
-        district_count = float(data_counts[i][year - 2004])
-        district_death = float(data_deaths[i][year - 2004])
+    for year in range(2009, 2010):
+        values = [] # (name, density, percentage of deaths)
 
-        # by a year
-        density = district_count / district_area
-        percent_death = district_death / district_count
+        for i in range(len(data_deaths)):
+            district_name = data_counts[i]["region"]
+            district_area = data_areas[i]["area"]
+            district_count = int(data_counts[i]["counts"][year - 2005])
+            district_death = data_deaths[i]["deaths"][common_id][year - 2005]
 
-        values.append((district_name,density, percent_death))
+            # by a year
+            density = district_count / district_area
+            percent_death = (district_death / district_count) * 100
 
-    values.sort(key=lambda tup: tup[1], reverse=False)
+            values.append((district_name,density, percent_death))
 
-    # print(values)
+        values.sort(key=lambda tup: tup[1], reverse=False)
 
-    # y_pos = np.arange(len(values))
 
-    # plt.bar(y_pos, list(map(lambda tup: tup[2],values)), align='center', alpha=0.5)
-    # plt.xticks(y_pos,list(map(lambda tup: tup[0], values)), rotation='vertical')
-    # plt.ylabel('Okresy')
-    # plt.title('Okresy v ČR')
+        y_pos = np.arange(len(values))
 
-    # plt.show()
+        plt.rcParams["figure.figsize"] = (15,10)
+        plt.subplots_adjust(left=0.05, right=0.95, top=0.95, bottom=0.2)
 
-    # print(getMean(values, 1))
+        plt.bar(y_pos, list(map(lambda tup: tup[2],values)), align='center', alpha=0.5)
+        plt.xticks(y_pos,list(map(lambda tup: tup[0], values)), rotation='vertical')
+        plt.ylabel('Počet úmrtí v %')
+        plt.title('Úmrtí {} v jedn. okresech v roce {} - seřazeno podle hustoty (vlevo nejmenší)'.format(common_id, year))
 
-    print(getPearsonCorrelation(values, 1, 2))
+        plt.savefig('graphs/{}-{}'.format(common_id, year), dpi=200)
+
+        plt.clf()
+
+
+        print("{}: {}".format(year,getPearsonCorrelation(values, 1, 2)))
