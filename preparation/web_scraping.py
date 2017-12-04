@@ -41,17 +41,15 @@ def getAreaByRegion():
 
         a_region = tds[0].find('a')
 
-        if a_region == None:
+        if a_region is None:
             continue
 
         # find the corresponding html tags and replace some html characters and comma (, -> .)
         region_name = a_region.get('title').replace('Okres ', '')
-        text_area = tds[2].get_text().replace('\xa0','').replace(',','.')
+        text_area = tds[2].get_text().replace('\xa0', '').replace(',', '.')
 
         val_area = float(text_area)
 
-        regions.append({"region" : region_name, "area": val_area})
-
-        # regions.append('{};{}'.format(region_name, val_area))
+        regions.append({"region": region_name, "area": val_area})
 
     return regions

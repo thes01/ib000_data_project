@@ -31,7 +31,7 @@ for filename in list_dir:
     # now lets test each rome number if it is contained
 
     for number in rome_numbers:
-        if parser.findRowById(number) != False:
+        if parser.findRowById(number) is not False:
             contained_numbers.append(number)
 
     if temp_intersection == []:

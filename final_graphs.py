@@ -6,16 +6,6 @@ from statistics import *
 
 COMMON_IDS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XVI', 'XVII', 'XVIII', 'XX']
 
-# def loadCsvFile(filename: str):
-#     data = []
-#     with open('data/{}.csv'.format(filename)) as csv_file:
-#         for line in csv_file:
-#             if len(line) > 0:
-#                 data.append(list(map(mapping_func, line.split(';'))))
-
-#     return data
-
-
 def loadTxtFile(filename: str):
     data = []
     with open('data/{}.txt'.format(filename)) as txt_file:

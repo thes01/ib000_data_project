@@ -5,7 +5,7 @@ PRAGUE_ID = '3018'
 
 
 # a helper function to add the namespace and/or global prefix
-def tag(tag_name: str, is_global=False, namespace = "{http://vdb.czso.cz/xml/export}"):
+def tag(tag_name: str, is_global=False, namespace="{http://vdb.czso.cz/xml/export}"):
     glob_prefix = "//" if is_global else ""
     return glob_prefix + namespace + tag_name
 
@@ -61,7 +61,7 @@ def getDictOfDiscrictsForYear(year: int):
     assert year >= 2005 and year <= 2014
 
     discricts_dict = {}
-        
+
     tree = etree.parse('data/ob_{}.xml'.format(year))
     root = tree.getroot()
 
@@ -84,8 +84,6 @@ def getDictOfDiscrictsForYear(year: int):
             continue
 
         val = entries_list[el_id]
-
-        # val = getEntryValue(entries, el_id, 'u1')
 
         # add region to the dictionary
         discricts_dict[el_name] = val
