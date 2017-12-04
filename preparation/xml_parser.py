@@ -4,25 +4,25 @@ DISTRICT_ID = '101'
 PRAGUE_ID = '3018'
 
 
-# a helper function to add the namespace and/or global prefix
 def tag(tag_name: str, is_global=False, namespace="{http://vdb.czso.cz/xml/export}"):
+    """ a helper function to add the namespace and/or global prefix """
     glob_prefix = "//" if is_global else ""
     return glob_prefix + namespace + tag_name
 
 
-# get a value from an unique entry
 def getEntryValue(entries, id, indicator):
+    """ get the value from an unique entry defined by id and indicator """
     for entry in entries:
         match_id = False
         match_indicator = False
         value = ''
 
         for child in entry:
-            if child.tag == '{http://vdb.czso.cz/xml/export}uze' and child.text == id:
+            if child.tag == tag('uze') and child.text == id:
                 match_id = True
-            if child.tag == '{http://vdb.czso.cz/xml/export}uka' and child.text == indicator:
+            if child.tag == tag('uka') and child.text == indicator:
                 match_indicator = True
-            if child.tag == '{http://vdb.czso.cz/xml/export}hod':
+            if child.tag == tag('hod'):
                 value = child.text
 
         if match_id and match_indicator:
@@ -30,6 +30,7 @@ def getEntryValue(entries, id, indicator):
 
 
 def processEntries(entries):
+    """ returns only entries with certain features """
     entries_list = {}
 
     for entry in entries:
@@ -47,10 +48,7 @@ def processEntries(entries):
             if value != '' and uze_id != '' and indicator != '':
                 break
 
-        # entries_list.append({"uze" : uze_id, "indicator": indicator, "value": value})
-
         # we are interested only in u1 indicator values
-
         if indicator == 'u1':
             entries_list[uze_id] = value
 
@@ -65,8 +63,8 @@ def getDictOfDiscrictsForYear(year: int):
     tree = etree.parse('data/ob_{}.xml'.format(year))
     root = tree.getroot()
 
-    elements = tree.findall('//{http://vdb.czso.cz/xml/export}element')
-    entries = tree.findall('//{http://vdb.czso.cz/xml/export}udaj')
+    elements = tree.findall(tag('element', is_global=True))
+    entries = tree.findall(tag('udaj', is_global=True))
 
     entries_list = processEntries(entries)
 
@@ -75,9 +73,10 @@ def getDictOfDiscrictsForYear(year: int):
         el_name = ''
         el_id = element.attrib['ID']
         for child in element:
-            if (child.tag == '{http://vdb.czso.cz/xml/export}ciselnik' and child.text == DISTRICT_ID) or (child.tag == '{http://vdb.czso.cz/xml/export}kod' and child.text == PRAGUE_ID):
+            if (child.tag == tag('ciselnik') and child.text == DISTRICT_ID) or
+            (child.tag == tag('kod') and child.text == PRAGUE_ID):
                 wanted = True
-            if (child.tag == '{http://vdb.czso.cz/xml/export}text'):
+            if child.tag == tag('text'):
                 el_name = child.text
 
         if not wanted:

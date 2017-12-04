@@ -6,6 +6,7 @@ from statistics import *
 
 COMMON_IDS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XVI', 'XVII', 'XVIII', 'XX']
 
+
 def loadTxtFile(filename: str):
     data = []
     with open('data/{}.txt'.format(filename)) as txt_file:
@@ -24,10 +25,10 @@ data_areas.sort(key=lambda dict: dict["region"])
 
 assert len(data_deaths) == len(data_counts) == len(data_areas)
 
-for common_id in ['XVIII']:
+for common_id in COMMON_IDS:
     print('{}:\n'.format(common_id))
 
-    for year in range(2009, 2010):
+    for year in range(2004, 2005):
         values = []  # (name, density, percentage of deaths)
 
         for i in range(len(data_deaths)):
