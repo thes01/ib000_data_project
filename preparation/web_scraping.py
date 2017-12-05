@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 
 
 def getTableHtml(url: str):
+    """ return the first table on a page """
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
 
@@ -23,7 +24,7 @@ def getLinkByRegion():
         name = trs_names[index].find('b').get_text().split(' - ')[0]
         href = trs_hrefs[index].find('a').get('href')
 
-        links.append((name, href))
+        links.append({"region": name, "href": href})
 
     return links
 

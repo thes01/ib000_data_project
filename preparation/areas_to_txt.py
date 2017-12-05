@@ -1,5 +1,5 @@
 from web_scraping import *
 
-with open('data/region_areas.txt', 'w') as csv_file:
+with open('data/region_areas.txt', 'w') as txt_file:
     for region_values in getAreaByRegion():
-        csv_file.write('{}\n'.format(repr(region_values)))
+        txt_file.write('{}\n'.format(repr(region_values)))

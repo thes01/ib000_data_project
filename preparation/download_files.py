@@ -5,7 +5,7 @@ links = getLinkByRegion()
 
 print("Parsing completed")
 
-for (name, href) in links:
-    print("Downloading {}".format(name))
-    urllib.request.urlretrieve(href, "data/excel/{}.xlsx".format(name))
-    print("Downloaded {}".format(name))
+for link in links:
+    print("Downloading {}".format(link.region))
+    urllib.request.urlretrieve(link.href, "data/excel/{}.xlsx".format(link.region))
+    print("Downloaded {}".format(link.region))

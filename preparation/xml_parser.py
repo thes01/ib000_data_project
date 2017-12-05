@@ -31,7 +31,7 @@ def getEntryValue(entries, id, indicator):
 
 def processEntries(entries):
     """ returns only entries with certain features """
-    entries_list = {}
+    entries_dict = {}
 
     for entry in entries:
         value = ''
@@ -50,9 +50,9 @@ def processEntries(entries):
 
         # we are interested only in u1 indicator values
         if indicator == 'u1':
-            entries_list[uze_id] = value
+            entries_dict[uze_id] = value
 
-    return entries_list
+    return entries_dict
 
 
 def getDictOfDiscrictsForYear(year: int):
