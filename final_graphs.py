@@ -25,11 +25,15 @@ data_areas.sort(key=lambda dict: dict["region"])
 
 assert len(data_deaths) == len(data_counts) == len(data_areas)
 
-for common_id in COMMON_IDS:
+for common_id in ['XVIII']:
     print('{}:\n'.format(common_id))
 
-    for year in range(2004, 2005):
-        values = []  # (name, density, percentage of deaths)
+    for year in range(2010, 2015):
+        # values = []  # (name, density, percentage of deaths)
+        assert year > 2004 and year < 2015
+
+        density_vals = []
+        death_vals = []
 
         for i in range(len(data_deaths)):
             district_name = data_counts[i]["region"]
@@ -41,21 +45,29 @@ for common_id in COMMON_IDS:
             density = district_count / district_area
             percent_death = (district_death / district_count) * 100
 
-            values.append((district_name, density, percent_death))
+            # values.append((density, percent_death))
+            density_vals.append(density)
+            death_vals.append(percent_death)
 
-        values.sort(key=lambda tup: tup[1], reverse=False)
+        # values.sort(key=lambda tup: tup[1], reverse=False)
 
-        y_pos = np.arange(len(values))
+        # y_pos = np.arange(len(values))
 
-        plt.rcParams["figure.figsize"] = (15, 10)
-        plt.subplots_adjust(left=0.05, right=0.95, top=0.95, bottom=0.2)
+        plt.scatter(density_vals, death_vals)
 
-        plt.bar(y_pos, list(map(lambda tup: tup[2], values)), align='center', alpha=0.5)
-        plt.xticks(y_pos, list(map(lambda tup: tup[0], values)), rotation='vertical')
+        plt.xlabel('Hustota okresu v ob/km2')
         plt.ylabel('Počet úmrtí v %')
-        plt.title('Úmrtí {} v jedn. okresech v roce {} - seřazeno podle hustoty (vlevo nejmenší)'.format(common_id, year))
+        plt.title('Úmrtí kategorie {} v jedn. okresech v roce {}'.format(common_id, year))
 
-        plt.savefig('graphs/{}-{}'.format(common_id, year), dpi=200)
-        plt.clf()
+        # plt.rcParams["figure.figsize"] = (15, 10)
+        # plt.subplots_adjust(left=0.05, right=0.95, top=0.95, bottom=0.2)
 
-        print("{}: {}".format(year, getPearsonCorrelation(values, 1, 2)))
+        # plt.bar(y_pos, list(map(lambda tup: tup[2], values)), align='center', alpha=0.5)
+        # plt.xticks(y_pos, list(map(lambda tup: tup[0], values)), rotation='vertical')
+
+        # plt.savefig('graphs/{}-{}'.format(common_id, year), dpi=200)
+        # plt.clf()
+
+        plt.show()
+
+        # print("{}: {}".format(year, getPearsonCorrelation(values, 1, 2)))
