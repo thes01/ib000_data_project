@@ -68,6 +68,6 @@ for common_id in ['XVIII']:
         # plt.savefig('graphs/{}-{}'.format(common_id, year), dpi=200)
         # plt.clf()
 
+        print("{}: {}".format(year, getPearsonCorrelation(density_vals, death_vals)))
         plt.show()
 
-        # print("{}: {}".format(year, getPearsonCorrelation(values, 1, 2)))
